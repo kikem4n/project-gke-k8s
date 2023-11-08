@@ -1,0 +1,9 @@
+variable "region" {}
+variable "zone" {}
+variable "cluster_name" {}
+variable "initial_node_count" {}
+variable "machine_type" {}
+variable "vpc_id" {}
+variable "subnetwork_id" {}
+variable "gke_nodes" {}
+variable "project_id" {}
