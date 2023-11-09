@@ -1,3 +1,4 @@
+// Connecting to GCS to upload TFSTATE
 terraform {
   backend "gcs" {
     bucket      = "gcp-terraform-kikeman"
@@ -20,6 +21,7 @@ terraform {
   }
 }
 
+// Downloading Providers
 provider "google" {
   project     = var.project_id
   region      = var.region
@@ -40,6 +42,8 @@ provider "kubernetes" {
   token                  = module.gke.cluster_access_token
   cluster_ca_certificate = base64decode(module.gke.cluster_ca_certificate)
 }
+
+// Loading Modules
 
 module "gke" {
   source             = ".//modules/gke"
