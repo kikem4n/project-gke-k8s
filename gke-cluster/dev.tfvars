@@ -59,7 +59,7 @@ releases_map = {
     message            = "Hello World from First Backend"
   }
   "gke-backend-2" = {
-    chart_source       = "./hello-kubernetes"
+    chart_source       = "../hello-kubernetes"
     namespace          = "gke-hw"
     create_namespace   = true
     service_type       = "ClusterIP"
@@ -72,7 +72,7 @@ releases_map = {
     message            = "Hello World from Second Backend"
   }
   "gke-backend-3" = {
-    chart_source       = "./hello-kubernetes"
+    chart_source       = "../hello-kubernetes"
     namespace          = "gke-hw"
     create_namespace   = true
     service_type       = "ClusterIP"
