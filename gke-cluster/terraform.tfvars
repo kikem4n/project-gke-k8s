@@ -16,52 +16,80 @@ initial_node_count = "1"
 machine_type       = "n1-standard-1"
 gke_nodes          = "3"
 
-## HELM Variables
-releases_map = {
-  "gke-custom-message" = {
-    chart_source       = "./hello-kubernetes"
-    namespace          = "gke-hw"
-    create_namespace   = true
-    service_type       = "ClusterIP"
-    replica_count      = "3"
-    service_port       = "80"
-    container_image    = "paulbouwer/hello-kubernetes"
-    image_version      = "1.10"
-    ingress_configured = true
-    path_prefix        = "custom-message"
-    message            = "Hello World from Second Backend"
+## UPTIME_CHECK Variables
+uptime_type = "k8s_service"
+uptime_config = {
+  "HTTP_GKE_Check_Backend_1" = {
+    checker_type    = "STATIC_IP_CHECKERS"
+    checker_period  = "60s"
+    checker_timeout = "10s"
+    path            = "/backend1"
+    port            = "80"
   }
-  "gke-hello-world" = {
-    chart_source       = "./hello-kubernetes"
-    namespace          = "gke-hw"
-    create_namespace   = true
-    service_type       = "ClusterIP"
-    replica_count      = "3"
-    service_port       = "80"
-    container_image    = "paulbouwer/hello-kubernetes"
-    image_version      = "1.10"
-    ingress_configured = true
-    path_prefix        = "hello-world"
-    message            = "Hello World from First Backend"
+  "HTTP_GKE_Check_Backend_2" = {
+    checker_type    = "STATIC_IP_CHECKERS"
+    checker_period  = "60s"
+    checker_timeout = "10s"
+    path            = "/backend2"
+    port            = "80"
   }
-  "gke-show-me-the-money" = {
-    chart_source       = "./hello-kubernetes"
-    namespace          = "gke-hw"
-    create_namespace   = true
-    service_type       = "ClusterIP"
-    replica_count      = "3"
-    service_port       = "80"
-    container_image    = "paulbouwer/hello-kubernetes"
-    image_version      = "1.10"
-    ingress_configured = true
-    path_prefix        = "shm"
-    message            = "Show Me The Money"
+  "HTTP_GKE_Check_Backend_3" = {
+    checker_type    = "STATIC_IP_CHECKERS"
+    checker_period  = "60s"
+    checker_timeout = "10s"
+    path            = "/backend3"
+    port            = "80"
   }  
 }
 
-ingress_name             = "ingress-nginx"
-ingress_namespace        = "ingress"
-ingress_repository       = "https://kubernetes.github.io/ingress-nginx"
-ingress_chart            = "ingress-nginx"
-ingress_create_namespace = true
+
+## HELM Variables
+releases_map = {
+  "gke-backend-1" = {
+    chart_source       = "./hello-kubernetes"
+    namespace          = "gke-hw"
+    create_namespace   = true
+    service_type       = "ClusterIP"
+    replica_count      = "3"
+    service_port       = "80"
+    container_image    = "paulbouwer/hello-kubernetes"
+    image_version      = "1.10"
+    ingress_configured = true
+    path_prefix        = "backend1"
+    message            = "Hello World from First Backend"
+  }
+  "gke-backend-2" = {
+    chart_source       = "./hello-kubernetes"
+    namespace          = "gke-hw"
+    create_namespace   = true
+    service_type       = "ClusterIP"
+    replica_count      = "3"
+    service_port       = "80"
+    container_image    = "paulbouwer/hello-kubernetes"
+    image_version      = "1.10"
+    ingress_configured = true
+    path_prefix        = "backend2"
+    message            = "Hello World from Second Backend"
+  }
+  "gke-backend-3" = {
+    chart_source       = "./hello-kubernetes"
+    namespace          = "gke-hw"
+    create_namespace   = true
+    service_type       = "ClusterIP"
+    replica_count      = "3"
+    service_port       = "80"
+    container_image    = "paulbouwer/hello-kubernetes"
+    image_version      = "1.10"
+    ingress_configured = true
+    path_prefix        = "backend3"
+    message            = "Hello World from Third Backend"
+  }  
+}
+
+ingress_name                 = "ingress-nginx"
+ingress_controller_namespace = "ingress"
+ingress_namespace            = "gke-hw"
+ingress_repository           = "https://kubernetes.github.io/ingress-nginx"
+ingress_chart                = "ingress-nginx"
+ingress_create_namespace     = true
 

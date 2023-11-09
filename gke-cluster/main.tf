@@ -3,7 +3,7 @@ terraform {
     bucket      = "gcp-terraform-kikeman"
     prefix      = "gke/terraform.tfstate"
     credentials = "gcp-keys.json"
-  }  
+  }
   required_providers {
     google = {
       source  = "hashicorp/google"
@@ -14,9 +14,9 @@ terraform {
       version = "2.11.0"
     }
     kubernetes = {
-      source = "hashicorp/kubernetes"
+      source  = "hashicorp/kubernetes"
       version = "2.23.0"
-    }    
+    }
   }
 }
 
@@ -36,9 +36,9 @@ provider "helm" {
 }
 
 provider "kubernetes" {
-    host                   = "https://${module.gke.cluster_endpoint}"
-    token                  = module.gke.cluster_access_token
-    cluster_ca_certificate = base64decode(module.gke.cluster_ca_certificate)
+  host                   = "https://${module.gke.cluster_endpoint}"
+  token                  = module.gke.cluster_access_token
+  cluster_ca_certificate = base64decode(module.gke.cluster_ca_certificate)
 }
 
 module "gke" {
@@ -63,12 +63,25 @@ module "vpc" {
   routing_mode  = var.routing_mode
 }
 
+module "uptime_check" {
+  source                       = ".//modules/uptime_check"
+  project_id                   = var.project_id
+  zone                         = var.zone
+  releases_map                 = var.releases_map
+  cluster_name                 = var.cluster_name
+  ingress_controller_namespace = var.ingress_controller_namespace
+  ingress_name                 = var.ingress_name
+  uptime_config                = var.uptime_config
+  uptime_type                  = var.uptime_type
+}
+
 module "helm" {
-  source                   = ".//modules/helm"
-  releases_map             = var.releases_map
-  ingress_name             = var.ingress_name
-  ingress_namespace        = var.ingress_namespace
-  ingress_repository       = var.ingress_repository
-  ingress_chart            = var.ingress_chart
-  ingress_create_namespace = var.ingress_create_namespace
+  source                       = ".//modules/helm"
+  releases_map                 = var.releases_map
+  ingress_name                 = var.ingress_name
+  ingress_controller_namespace = var.ingress_controller_namespace
+  ingress_namespace            = var.ingress_namespace
+  ingress_repository           = var.ingress_repository
+  ingress_chart                = var.ingress_chart
+  ingress_create_namespace     = var.ingress_create_namespace
 }

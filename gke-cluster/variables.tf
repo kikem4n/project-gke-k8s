@@ -16,11 +16,16 @@ variable "initial_node_count" {}
 variable "machine_type" {}
 variable "gke_nodes" {}
 
+## UPTIME_CHECK Variables
+variable "uptime_config" {}
+variable "uptime_type" {}
+
 ## HELM Variables
 variable "releases_map" {
   type = map(any)
 }
 variable "ingress_name" {}
+variable "ingress_controller_namespace" {}
 variable "ingress_namespace" {}
 variable "ingress_repository" {}
 variable "ingress_chart" {}

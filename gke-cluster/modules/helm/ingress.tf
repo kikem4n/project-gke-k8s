@@ -1,6 +1,7 @@
 resource "helm_release" "ingress-nginx" {
+  depends_on = [ helm_release.helm_releases ]
   name      = var.ingress_name
-  namespace = var.ingress_namespace
+  namespace = var.ingress_controller_namespace
 
   repository       = var.ingress_repository
   chart            = var.ingress_chart
@@ -13,10 +14,11 @@ resource "helm_release" "ingress-nginx" {
 }
 
 resource "kubernetes_ingress_v1" "ingress-nginx" {
+  depends_on = [ helm_release.helm_releases ]
   wait_for_load_balancer = true
   metadata {
     name = var.ingress_name
-    namespace = "gke-hw"
+    namespace = var.ingress_namespace
     annotations = {
       "kubernetes.io/ingress.class" = "nginx"
       "nginx.ingress.kubernetes.io/rewrite-target" = "/$2"
@@ -37,6 +39,7 @@ resource "kubernetes_ingress_v1" "ingress-nginx" {
               }
             }
             path = "/${path.value.path_prefix}(/|$)(.*)"
+            path_type = "Prefix"
           }
         }
       }
