@@ -46,7 +46,7 @@ uptime_config = {
 ## HELM Variables
 releases_map = {
   "gke-backend-1" = {
-    chart_source       = "./hello-kubernetes"
+    chart_source       = "../hello-kubernetes"
     namespace          = "gke-hw"
     create_namespace   = true
     service_type       = "ClusterIP"

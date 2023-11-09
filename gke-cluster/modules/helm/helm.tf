@@ -5,9 +5,9 @@ resource "helm_release" "helm_releases" {
   namespace        = each.value.namespace
   create_namespace = each.value.create_namespace
 
-  values = [
-    "${file("./hello-kubernetes/values.yaml")}"
-  ]
+  # values = [
+  #   "${file("./hello-kubernetes/values.yaml")}"
+  # ]
 
   set {
     name  = "deployment.replicaCount"
@@ -50,34 +50,3 @@ resource "helm_release" "helm_releases" {
   }
 
 }
-
-# resource "helm_release" "myapp_2" {
-#   name       = "second-chart"
-#   chart      = var.chart_source
-#   namespace  = var.namespace
-#   create_namespace = true
-
-#   values = [
-#     "${file("./hello-kubernetes/values.yaml")}"
-#   ]
-
-#   set {
-#     name  = "deployment.replicaCount"
-#     value = var.replica_count
-#   }
-
-#   set {
-#     name  = "service.type"
-#     value = var.service_type
-#   }
-
-#   set {
-#     name  = "service.port"
-#     value = var.service_port
-#   }
-
-#   set {
-#     name  = "deployment.container.image.repository"
-#     value = var.container_image
-#   }
-# }
