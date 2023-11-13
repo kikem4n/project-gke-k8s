@@ -21,7 +21,7 @@ resource "kubernetes_ingress_v1" "ingress-nginx" {
     namespace = var.ingress_namespace
     annotations = {
       "kubernetes.io/ingress.class" = "nginx"
-      "nginx.ingress.kubernetes.io/rewrite-target" = "/"#"$2"
+      "nginx.ingress.kubernetes.io/rewrite-target" = "/$2"
     }
   }
   spec{
@@ -38,7 +38,7 @@ resource "kubernetes_ingress_v1" "ingress-nginx" {
                 }                
               }
             }
-            path = "/${path.value.path_prefix}"#"(/|$)(.*)"
+            path = "/${path.value.path_prefix}(/|$)(.*)"
             path_type = "Prefix"
           }
         }
