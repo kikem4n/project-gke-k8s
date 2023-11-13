@@ -103,7 +103,20 @@ The `path` value should be the same as stated for your new backend created in HE
 After creating the cluster, if you want to use Kubectl you will have to add your cluster to the Kubeconfig Context, For this you will only have to add the command that results at the end of you apply if succesfully created.
 
 
+## Testing the solution
 
+After all resources are deployed and we are connected to our cluster, we can test our Kubernetes resources.
+
+Run `kubectl get ingress -n gke-hw` to get the ingress resources.
+Run `kubectl describe ingress ingress-nginx -n gke-hw` to display a description of your Ingress.
+
+You will see the Public IP Adress and under rules you will see the Paths as you named in your configuration as "/my_path".
+
+Copy the IP and any path into your browser as http://my_ip/my_path and you will see the follow page:
+![hello](hello-k8s.JPG)
+
+In this frontend we have the custom value of `message` variable we define in HELM Releases. It also shows the Kubernetes Namespace, Pod and Node the HELM chart is in.
+Refresh constantly to see the redirection of the number of Pods and Nodes.
 
 
 
