@@ -1,13 +1,13 @@
 ## Main variables
-project_id  = "careful-plexus-402523"
+project_id  = "gke-dev-405020"
 region      = "us-east4"
 zone        = "us-east4-a"
-credentials = ".//gcp-keys.json"
+credentials = ".//gke-dev.json"
 
 ## VPC Variables
 vpc_name      = "gke-vpc"
 subnet_name   = "gke"
-ip_cidr_block = "10.0.1.0/24"
+ip_cidr_block = "10.0.2.0/24"
 routing_mode  = "GLOBAL"
 
 ## GKE Variables
@@ -37,20 +37,20 @@ uptime_config = {
     path            = "/backend1"
     port            = "80"
   }
-  "HTTP_GKE_Check_Backend_2" = {
-    checker_type    = "STATIC_IP_CHECKERS"
-    checker_period  = "60s"
-    checker_timeout = "10s"
-    path            = "/backend2"
-    port            = "80"
-  }
-  "HTTP_GKE_Check_Backend_3" = {
-    checker_type    = "STATIC_IP_CHECKERS"
-    checker_period  = "60s"
-    checker_timeout = "10s"
-    path            = "/backend3"
-    port            = "80"
-  }
+  # "HTTP_GKE_Check_Backend_2" = {
+  #   checker_type    = "STATIC_IP_CHECKERS"
+  #   checker_period  = "60s"
+  #   checker_timeout = "10s"
+  #   path            = "/backend2"
+  #   port            = "80"
+  # }
+  # "HTTP_GKE_Check_Backend_3" = {
+  #   checker_type    = "STATIC_IP_CHECKERS"
+  #   checker_period  = "60s"
+  #   checker_timeout = "10s"
+  #   path            = "/backend3"
+  #   port            = "80"
+  # }
 }
 
 
@@ -69,32 +69,32 @@ releases_map = {
     path_prefix        = "backend1"
     message            = "Hello World from First Backend"
   }
-  "gke-backend-2" = {
-    chart_source       = "../hello-kubernetes"
-    namespace          = "gke-hw"
-    create_namespace   = true
-    service_type       = "ClusterIP"
-    replica_count      = "3"
-    service_port       = "80"
-    container_image    = "paulbouwer/hello-kubernetes"
-    image_version      = "1.10"
-    ingress_configured = true
-    path_prefix        = "backend2"
-    message            = "Hello World from Second Backend"
-  }
-  "gke-backend-3" = {
-    chart_source       = "../hello-kubernetes"
-    namespace          = "gke-hw"
-    create_namespace   = true
-    service_type       = "ClusterIP"
-    replica_count      = "3"
-    service_port       = "80"
-    container_image    = "paulbouwer/hello-kubernetes"
-    image_version      = "1.10"
-    ingress_configured = true
-    path_prefix        = "backend3"
-    message            = "Hello World from Third Backend"
-  }
+  # "gke-backend-2" = {
+  #   chart_source       = "../hello-kubernetes"
+  #   namespace          = "gke-hw"
+  #   create_namespace   = true
+  #   service_type       = "ClusterIP"
+  #   replica_count      = "3"
+  #   service_port       = "80"
+  #   container_image    = "paulbouwer/hello-kubernetes"
+  #   image_version      = "1.10"
+  #   ingress_configured = true
+  #   path_prefix        = "backend2"
+  #   message            = "Hello World from Second Backend"
+  # }
+  # "gke-backend-3" = {
+  #   chart_source       = "../hello-kubernetes"
+  #   namespace          = "gke-hw"
+  #   create_namespace   = true
+  #   service_type       = "ClusterIP"
+  #   replica_count      = "3"
+  #   service_port       = "80"
+  #   container_image    = "paulbouwer/hello-kubernetes"
+  #   image_version      = "1.10"
+  #   ingress_configured = true
+  #   path_prefix        = "backend3"
+  #   message            = "Hello World from Third Backend"
+  # }
 }
 
 ingress_name                 = "ingress-nginx"
