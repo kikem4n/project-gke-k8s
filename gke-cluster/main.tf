@@ -73,7 +73,7 @@ module "vpc" {
 
 module "uptime_check" {
   source                       = ".//modules/uptime_check"
-  depends_on                   = [ module.helm ]
+  depends_on                   = [module.helm]
   project_id                   = var.project_id
   zone                         = var.zone
   region                       = var.region

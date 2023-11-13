@@ -11,6 +11,7 @@ ip_cidr_block = "10.0.1.0/24"
 routing_mode  = "GLOBAL"
 
 ## GKE Variables
+regional           = false
 cluster_name       = "gke-cluster"
 initial_node_count = "1"
 machine_type       = "e2-medium"
@@ -49,7 +50,7 @@ uptime_config = {
     checker_timeout = "10s"
     path            = "/backend3"
     port            = "80"
-  }  
+  }
 }
 
 
@@ -93,7 +94,7 @@ releases_map = {
     ingress_configured = true
     path_prefix        = "backend3"
     message            = "Hello World from Third Backend"
-  }  
+  }
 }
 
 ingress_name                 = "ingress-nginx"
