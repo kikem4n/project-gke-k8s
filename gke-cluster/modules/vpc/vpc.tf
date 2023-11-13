@@ -9,6 +9,4 @@ resource "google_compute_subnetwork" "gke_subnets" {
   ip_cidr_range = var.ip_cidr_block
   region        = var.region
   network       = google_compute_network.gke_vpc.id
-
 }
-
