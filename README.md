@@ -22,7 +22,7 @@ After deploying Helm resources, the template will provision a HTTP Google Uptime
 When succesfully applied the Terraform code, an output will be showing, please add the value of the output to your terminal to add the cluster to your Kubeconfig Contexts and use Kubectl CLI.
 
 
-## Diagram of the solution.
+## Architecture.
 
 ![Diagram](diagram.jpg)
 
