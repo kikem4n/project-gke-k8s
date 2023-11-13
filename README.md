@@ -120,6 +120,11 @@ In this frontend we have the custom value of `message` variable we define in HEL
 Refresh constantly to see the redirection of the number of Pods and Nodes.
 
 
+### Contributors
+
+---
+
+Hiram Rosales - Cloud Engineer
 
 
 
