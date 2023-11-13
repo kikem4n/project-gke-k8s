@@ -12,7 +12,7 @@ resource "google_container_cluster" "gke_cluster" {
   network                  = var.vpc_id
   subnetwork               = var.subnetwork_id
   deletion_protection      = false
-  node_locations           = var.node_locations
+  node_locations           = var.regional ? var.node_locations : null
 }
 
 resource "google_container_node_pool" "gke_nodes" {
