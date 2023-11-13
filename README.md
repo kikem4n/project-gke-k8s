@@ -1,4 +1,4 @@
-# Kubernetes & HELM in GPC with Terraform.
+# Kubernetes & HELM in GCP with Terraform.
 
 Terraform template to provision the follow resources:
 
@@ -113,6 +113,7 @@ Run `kubectl describe ingress ingress-nginx -n gke-hw` to display a description 
 You will see the Public IP Adress and under rules you will see the Paths as you named in your configuration as "/my_path".
 
 Copy the IP and any path into your browser as http://my_ip/my_path and you will see the follow page:
+
 ![hello](hello-k8s.JPG)
 
 In this frontend we have the custom value of `message` variable we define in HELM Releases. It also shows the Kubernetes Namespace, Pod and Node the HELM chart is in.
