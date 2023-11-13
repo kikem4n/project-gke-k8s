@@ -5,6 +5,11 @@ variable "project_id" {
 variable "region" {
   description = "Google Account Region"
 }
+variable "regional" {
+  description = "Google Account Region"
+  type = bool
+  default = true
+}
 variable "zone" {
   description = "Google Account Location"
 }
@@ -38,6 +43,16 @@ variable "machine_type" {
 }
 variable "gke_nodes" {
   description = "Number of nodes to create in GKE"
+}
+variable "node_locations" {
+  description = "Node Locations"
+}
+variable "oauth_scopes" {
+  description = "OAuth scopes of the node."
+  type        = list(string)
+}
+variable "disk_size_gb" {
+  description = "Size of disk in GB"
 }
 
 ## UPTIME_CHECK Variables

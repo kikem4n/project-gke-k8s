@@ -49,6 +49,7 @@ module "gke" {
   source             = ".//modules/gke"
   region             = var.region
   zone               = var.zone
+  regional           = var.regional
   cluster_name       = var.cluster_name
   initial_node_count = var.initial_node_count
   machine_type       = var.machine_type
@@ -56,6 +57,9 @@ module "gke" {
   subnetwork_id      = module.vpc.subnetwork_id
   gke_nodes          = var.gke_nodes
   project_id         = var.project_id
+  node_locations     = var.node_locations
+  oauth_scopes       = var.oauth_scopes
+  disk_size_gb       = var.disk_size_gb
 }
 
 module "vpc" {
@@ -72,6 +76,8 @@ module "uptime_check" {
   depends_on                   = [ module.helm ]
   project_id                   = var.project_id
   zone                         = var.zone
+  region                       = var.region
+  regional                     = var.regional
   releases_map                 = var.releases_map
   cluster_name                 = var.cluster_name
   ingress_controller_namespace = var.ingress_controller_namespace

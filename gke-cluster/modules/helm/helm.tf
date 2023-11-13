@@ -5,10 +5,6 @@ resource "helm_release" "helm_releases" {
   namespace        = each.value.namespace
   create_namespace = each.value.create_namespace
 
-  # values = [
-  #   "${file("./hello-kubernetes/values.yaml")}"
-  # ]
-
   set {
     name  = "deployment.replicaCount"
     value = each.value.replica_count

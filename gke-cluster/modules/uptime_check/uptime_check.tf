@@ -20,7 +20,7 @@ resource "google_monitoring_uptime_check_config" "http-gke-uptime-check" {
   monitored_resource {
     labels = {
       "cluster_name"   = var.cluster_name                 
-      "location"       = var.zone                         
+      "location"       = var.regional ? var.region : var.zone                       
       "namespace_name" = var.ingress_controller_namespace 
       "project_id"     = var.project_id                  
       "service_name"   = "${var.ingress_name}-controller"            

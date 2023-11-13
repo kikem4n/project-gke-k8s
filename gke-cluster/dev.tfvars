@@ -13,8 +13,18 @@ routing_mode  = "GLOBAL"
 ## GKE Variables
 cluster_name       = "gke-cluster"
 initial_node_count = "1"
-machine_type       = "n1-standard-1"
-gke_nodes          = "3"
+machine_type       = "e2-medium"
+gke_nodes          = "2"
+oauth_scopes = [
+  "https://www.googleapis.com/auth/logging.write",
+  "https://www.googleapis.com/auth/monitoring",
+]
+disk_size_gb = "10"
+node_locations = [
+  "us-east4-a",
+  "us-east4-b",
+  "us-east4-c"
+]
 
 ## UPTIME_CHECK Variables
 uptime_type = "k8s_service"
@@ -92,4 +102,3 @@ ingress_namespace            = "gke-hw"
 ingress_repository           = "https://kubernetes.github.io/ingress-nginx"
 ingress_chart                = "ingress-nginx"
 ingress_create_namespace     = true
-
