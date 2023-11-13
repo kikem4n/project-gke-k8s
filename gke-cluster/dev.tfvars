@@ -15,7 +15,7 @@ regional           = false
 cluster_name       = "gke-cluster"
 initial_node_count = "1"
 machine_type       = "e2-medium"
-gke_nodes          = "2"
+gke_nodes          = "3"
 oauth_scopes = [
   "https://www.googleapis.com/auth/logging.write",
   "https://www.googleapis.com/auth/monitoring",
