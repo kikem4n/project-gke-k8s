@@ -2,20 +2,20 @@
 project_id  = "gke-dev-405020"
 region      = "us-east4"
 zone        = "us-east4-a"
-credentials = ".//gke-dev.json"
+credentials = ".//gcp-keys.json"
 
 ## VPC Variables
 vpc_name      = "gke-vpc"
 subnet_name   = "gke"
-ip_cidr_block = "10.0.2.0/24"
+ip_cidr_block = "10.1.0.0/16"
 routing_mode  = "GLOBAL"
 
 ## GKE Variables
-regional           = false
+regional           = true
 cluster_name       = "gke-cluster"
 initial_node_count = "1"
 machine_type       = "e2-medium"
-gke_nodes          = "3"
+gke_nodes          = "1"
 oauth_scopes = [
   "https://www.googleapis.com/auth/logging.write",
   "https://www.googleapis.com/auth/monitoring",
@@ -69,32 +69,32 @@ releases_map = {
     path_prefix        = "backend1"
     message            = "Hello World from First Backend"
   }
-  # "gke-backend-2" = {
-  #   chart_source       = "../hello-kubernetes"
-  #   namespace          = "gke-hw"
-  #   create_namespace   = true
-  #   service_type       = "ClusterIP"
-  #   replica_count      = "3"
-  #   service_port       = "80"
-  #   container_image    = "paulbouwer/hello-kubernetes"
-  #   image_version      = "1.10"
-  #   ingress_configured = true
-  #   path_prefix        = "backend2"
-  #   message            = "Hello World from Second Backend"
-  # }
-  # "gke-backend-3" = {
-  #   chart_source       = "../hello-kubernetes"
-  #   namespace          = "gke-hw"
-  #   create_namespace   = true
-  #   service_type       = "ClusterIP"
-  #   replica_count      = "3"
-  #   service_port       = "80"
-  #   container_image    = "paulbouwer/hello-kubernetes"
-  #   image_version      = "1.10"
-  #   ingress_configured = true
-  #   path_prefix        = "backend3"
-  #   message            = "Hello World from Third Backend"
-  # }
+  "gke-backend-2" = {
+    chart_source       = "../hello-kubernetes"
+    namespace          = "gke-hw"
+    create_namespace   = true
+    service_type       = "ClusterIP"
+    replica_count      = "3"
+    service_port       = "80"
+    container_image    = "paulbouwer/hello-kubernetes"
+    image_version      = "1.10"
+    ingress_configured = true
+    path_prefix        = "backend2"
+    message            = "Hello World from Second Backend"
+  }
+  "gke-backend-3" = {
+    chart_source       = "../hello-kubernetes"
+    namespace          = "gke-hw"
+    create_namespace   = true
+    service_type       = "ClusterIP"
+    replica_count      = "3"
+    service_port       = "80"
+    container_image    = "paulbouwer/hello-kubernetes"
+    image_version      = "1.10"
+    ingress_configured = true
+    path_prefix        = "backend3"
+    message            = "Hello World from Third Backend"
+  }
 }
 
 ingress_name                 = "ingress-nginx"
