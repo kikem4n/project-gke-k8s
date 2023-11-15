@@ -69,32 +69,32 @@ releases_map = {
     path_prefix        = "backend1"
     message            = "Hello World from First Backend"
   }
-  # "gke-backend-2" = {
-  #   chart_source       = "../hello-kubernetes"
-  #   namespace          = "gke-hw"
-  #   create_namespace   = true
-  #   service_type       = "ClusterIP"
-  #   replica_count      = "3"
-  #   service_port       = "80"
-  #   container_image    = "paulbouwer/hello-kubernetes"
-  #   image_version      = "1.10"
-  #   ingress_configured = true
-  #   path_prefix        = "backend2"
-  #   message            = "Hello World from Second Backend"
-  # }
-  # "gke-backend-3" = {
-  #   chart_source       = "../hello-kubernetes"
-  #   namespace          = "gke-hw"
-  #   create_namespace   = true
-  #   service_type       = "ClusterIP"
-  #   replica_count      = "3"
-  #   service_port       = "80"
-  #   container_image    = "paulbouwer/hello-kubernetes"
-  #   image_version      = "1.10"
-  #   ingress_configured = true
-  #   path_prefix        = "backend3"
-  #   message            = "Hello World from Third Backend"
-  # }
+  "gke-backend-2" = {
+    chart_source       = "../hello-kubernetes"
+    namespace          = "gke-hw"
+    create_namespace   = true
+    service_type       = "ClusterIP"
+    replica_count      = "3"
+    service_port       = "80"
+    container_image    = "paulbouwer/hello-kubernetes"
+    image_version      = "1.10"
+    ingress_configured = true
+    path_prefix        = "backend2"
+    message            = "Hello World from Second Backend"
+  }
+  "gke-backend-3" = {
+    chart_source       = "../hello-kubernetes"
+    namespace          = "gke-hw"
+    create_namespace   = true
+    service_type       = "ClusterIP"
+    replica_count      = "3"
+    service_port       = "80"
+    container_image    = "paulbouwer/hello-kubernetes"
+    image_version      = "1.10"
+    ingress_configured = true
+    path_prefix        = "backend3"
+    message            = "Hello World from Third Backend"
+  }
 }
 
 ingress_name                 = "ingress-nginx"
