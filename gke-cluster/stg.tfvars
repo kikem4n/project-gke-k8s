@@ -1,5 +1,5 @@
 ## Main variables
-project_id  = "gcp-dev-405122"
+project_id  = "gcp-stg-405122"
 region      = "us-east4"
 zone        = "us-east4-a"
 credentials = ".//gcp-keys.json"
@@ -11,11 +11,11 @@ ip_cidr_block = "10.1.0.0/16"
 routing_mode  = "GLOBAL"
 
 ## GKE Variables
-regional           = false
+regional           = true
 cluster_name       = "gke-cluster"
 initial_node_count = "1"
 machine_type       = "e2-medium"
-gke_nodes          = "3"
+gke_nodes          = "1"
 oauth_scopes = [
   "https://www.googleapis.com/auth/logging.write",
   "https://www.googleapis.com/auth/monitoring",
@@ -37,13 +37,13 @@ uptime_config = {
     path            = "/backend1"
     port            = "80"
   }
-  # "HTTP_GKE_Check_Backend_2" = {
-  #   checker_type    = "STATIC_IP_CHECKERS"
-  #   checker_period  = "60s"
-  #   checker_timeout = "10s"
-  #   path            = "/backend2"
-  #   port            = "80"
-  # }
+  "HTTP_GKE_Check_Backend_2" = {
+    checker_type    = "STATIC_IP_CHECKERS"
+    checker_period  = "60s"
+    checker_timeout = "10s"
+    path            = "/backend2"
+    port            = "80"
+  }
   # "HTTP_GKE_Check_Backend_3" = {
   #   checker_type    = "STATIC_IP_CHECKERS"
   #   checker_period  = "60s"
@@ -69,19 +69,19 @@ releases_map = {
     path_prefix        = "backend1"
     message            = "Hello World from First Backend"
   }
-  # "gke-backend-2" = {
-  #   chart_source       = "../hello-kubernetes"
-  #   namespace          = "gke-hw"
-  #   create_namespace   = true
-  #   service_type       = "ClusterIP"
-  #   replica_count      = "3"
-  #   service_port       = "80"
-  #   container_image    = "paulbouwer/hello-kubernetes"
-  #   image_version      = "1.10"
-  #   ingress_configured = true
-  #   path_prefix        = "backend2"
-  #   message            = "Hello World from Second Backend"
-  # }
+  "gke-backend-2" = {
+    chart_source       = "../hello-kubernetes"
+    namespace          = "gke-hw"
+    create_namespace   = true
+    service_type       = "ClusterIP"
+    replica_count      = "3"
+    service_port       = "80"
+    container_image    = "paulbouwer/hello-kubernetes"
+    image_version      = "1.10"
+    ingress_configured = true
+    path_prefix        = "backend2"
+    message            = "Hello World from Second Backend"
+  }
   # "gke-backend-3" = {
   #   chart_source       = "../hello-kubernetes"
   #   namespace          = "gke-hw"
