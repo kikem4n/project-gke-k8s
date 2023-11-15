@@ -37,13 +37,13 @@ uptime_config = {
     path            = "/backend1"
     port            = "80"
   }
-  # "HTTP_GKE_Check_Backend_2" = {
-  #   checker_type    = "STATIC_IP_CHECKERS"
-  #   checker_period  = "60s"
-  #   checker_timeout = "10s"
-  #   path            = "/backend2"
-  #   port            = "80"
-  # }
+  "HTTP_GKE_Check_Backend_2" = {
+    checker_type    = "STATIC_IP_CHECKERS"
+    checker_period  = "60s"
+    checker_timeout = "10s"
+    path            = "/backend2"
+    port            = "80"
+  }
   # "HTTP_GKE_Check_Backend_3" = {
   #   checker_type    = "STATIC_IP_CHECKERS"
   #   checker_period  = "60s"
@@ -82,19 +82,19 @@ releases_map = {
     path_prefix        = "backend2"
     message            = "Hello World from Second Backend"
   }
-  "gke-backend-3" = {
-    chart_source       = "../hello-kubernetes"
-    namespace          = "gke-hw"
-    create_namespace   = true
-    service_type       = "ClusterIP"
-    replica_count      = "3"
-    service_port       = "80"
-    container_image    = "paulbouwer/hello-kubernetes"
-    image_version      = "1.10"
-    ingress_configured = true
-    path_prefix        = "backend3"
-    message            = "Hello World from Third Backend"
-  }
+  # "gke-backend-3" = {
+  #   chart_source       = "../hello-kubernetes"
+  #   namespace          = "gke-hw"
+  #   create_namespace   = true
+  #   service_type       = "ClusterIP"
+  #   replica_count      = "3"
+  #   service_port       = "80"
+  #   container_image    = "paulbouwer/hello-kubernetes"
+  #   image_version      = "1.10"
+  #   ingress_configured = true
+  #   path_prefix        = "backend3"
+  #   message            = "Hello World from Third Backend"
+  # }
 }
 
 ingress_name                 = "ingress-nginx"
