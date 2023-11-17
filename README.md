@@ -118,8 +118,9 @@ The `path` value should be the same as stated for your new backend created in HE
 
 ## Connecting to the cluster
 
-After creating the cluster, if you want to use Kubectl you will have to add your cluster to the Kubeconfig Context, For this you will only have to add the command that results at the end of you apply if succesfully created.
+After creating the cluster, if you want to use Kubectl you will have to add your cluster to the Kubeconfig Context, For this you will only have to add the follow command that results at the end of you apply if succesfully created. It may be different depending if Regional or Zonal Cluster selection.
 
+`gcloud container clusters get-credentials gke-cluster --zone us-east4-a`
 
 ## Testing the solution
 
