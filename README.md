@@ -62,9 +62,9 @@ Then, you will be able to run Terraform CLI commnads:
 - `terraform apply -var-file my-variables.tfvars` to apply the desired infrastructure. You will be prompted to enter `yes` to confirm the apply. You can also use `--auto-approve` flag if you are sure to apply the code.
 - `terraform destroy -var-file my-variables.tfvars` to destroy the infrastructure.
 
-### Using Scalr
+### Scalr
 
-After creating a SCALR account, please refer to SCARL documentation to connect your repo and setup your remote account.
+After creating a SCALR account, please refer to SCALR documentation to connect your repo and setup your remote account.
 
 
 ## Usage
