@@ -49,6 +49,24 @@ When succesfully applied the Terraform code, an output will be showing, please a
 - **Optional** A GCS Bucket to store the [TFSTATE](https://developer.hashicorp.com/terraform/language/settings/backends/gcs). Mandatory if you won't deploy the infrastructure using SCALR or Terraform Cloud.
 - **Optional** A [SCALR](https://www.scalr.com) Account to remote provisioning and state control.
 
+## How to apply
+
+### Locally
+
+If you would like to apply the code locally, there are some important keys to consider.
+You'll need the GCP Service Account keys JSON file and use them to reach the Backend and the GCP console.
+
+Then, you will be able to run Terraform CLI commnads:
+- `terraform init` To Initialize the Modules and connect to the GCS Backend Bucket.
+- `terraform plan -var-file my-variables.tfvars` to see the the output of your infrastructure to be provisioned with the paramenters set on your .tfvars file.
+- `terraform apply -var-file my-variables.tfvars` to apply the desired infrastructure. You will be prompted to enter `yes` to confirm the apply. You can also use `--auto-approve` flag if you are sure to apply the code.
+- `terraform destroy -var-file my-variables.tfvars` to destroy the infrastructure.
+
+### Using Scalr
+
+After creating a SCALR account, please refer to SCARL documentation to connect your repo and setup your remote account.
+
+
 ## Usage
 
 As said, the template will provision a VPC, GKE Cluster, Helm Charts, Ingress and Uptime Checks, all of this resources have to be managed using `dev.tfvars` file. Please do not modify anything inside `modules` and `main.tf` unless you have to do major maintenance to the code.
