@@ -82,9 +82,9 @@ releases_map = {
     path_prefix        = "backend2"
     message            = "Hello World from Second Backend"
   }
-  # "gke-backend-3" = {   #>>> Uncomment the block to create this new HELM release
+  # "gke-backend-3" = { #>>> Uncomment the block to create this new HELM release
   #   chart_source       = "../hello-kubernetes"
-  #   namespace          = "gke-hw"
+  #   namespace          = "gke-dev-hw"
   #   create_namespace   = true
   #   service_type       = "ClusterIP"
   #   replica_count      = "3"
