@@ -84,7 +84,7 @@ releases_map = {
   }
   # "gke-backend-3" = {   #>>> Uncomment the block to create this new HELM release
   #   chart_source       = "../hello-kubernetes"
-  #   namespace          = "gke-hw"
+  #   namespace          = "gke-dev-hw"
   #   create_namespace   = true
   #   service_type       = "ClusterIP"
   #   replica_count      = "3"
