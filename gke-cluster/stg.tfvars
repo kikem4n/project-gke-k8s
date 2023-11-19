@@ -5,14 +5,14 @@
 # credentials = ".//gcp-keys.json"
 
 # ## VPC Variables
-# vpc_name      = "gke-vpc"
+# vpc_name      = "gke-stg-vpc"
 # subnet_name   = "gke"
 # ip_cidr_block = "10.1.0.0/16"
 # routing_mode  = "GLOBAL"
 
 # ## GKE Variables
 # regional           = true
-# cluster_name       = "gke-cluster"
+# cluster_name       = "gke-stg-cluster"
 # initial_node_count = "1"
 # machine_type       = "e2-medium"
 # gke_nodes          = "1"
@@ -56,9 +56,9 @@
 
 # ## HELM Variables
 # releases_map = {
-#   "gke-backend-1" = {
+#   "gke-stg-backend-1" = {
 #     chart_source       = "../hello-kubernetes"
-#     namespace          = "gke-hw"
+#     namespace          = "gke-stg-hw"
 #     create_namespace   = true
 #     service_type       = "ClusterIP"
 #     replica_count      = "3"
@@ -69,9 +69,9 @@
 #     path_prefix        = "backend1"
 #     message            = "Hello World from First Backend"
 #   }
-#   "gke-backend-2" = {
+#   "gke-stg-backend-2" = {
 #     chart_source       = "../hello-kubernetes"
-#     namespace          = "gke-hw"
+#     namespace          = "gke-stg-hw"
 #     create_namespace   = true
 #     service_type       = "ClusterIP"
 #     replica_count      = "3"
@@ -82,9 +82,9 @@
 #     path_prefix        = "backend2"
 #     message            = "Hello World from Second Backend"
 #   }
-#   # "gke-backend-3" = {
+#   # "gke-stg-backend-3" = {
 #   #   chart_source       = "../hello-kubernetes"
-#   #   namespace          = "gke-hw"
+#   #   namespace          = "gke-stg-hw"
 #   #   create_namespace   = true
 #   #   service_type       = "ClusterIP"
 #   #   replica_count      = "3"
@@ -99,7 +99,7 @@
 
 # ingress_name                 = "ingress-nginx"
 # ingress_controller_namespace = "ingress"
-# ingress_namespace            = "gke-hw"
+# ingress_namespace            = "gke-stg-hw"
 # ingress_repository           = "https://kubernetes.github.io/ingress-nginx"
 # ingress_chart                = "ingress-nginx"
 # ingress_create_namespace     = true

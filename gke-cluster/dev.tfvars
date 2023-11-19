@@ -44,13 +44,13 @@ uptime_config = {                #>>> Uptime config map
     path            = "/backend2"
     port            = "80"
   }
-  "HTTP_GKE_Check_Backend_3" = { #>>> Uncomment the block to create this new Uptime Check
-    checker_type    = "STATIC_IP_CHECKERS"
-    checker_period  = "60s"
-    checker_timeout = "10s"
-    path            = "/backend3"
-    port            = "80"
-  }
+  # "HTTP_GKE_Check_Backend_3" = { #>>> Uncomment the block to create this new Uptime Check
+  #   checker_type    = "STATIC_IP_CHECKERS"
+  #   checker_period  = "60s"
+  #   checker_timeout = "10s"
+  #   path            = "/backend3"
+  #   port            = "80"
+  # }
 }
 
 
@@ -82,7 +82,7 @@ releases_map = {
     path_prefix        = "backend2"
     message            = "Hello World from Second Backend"
   }
-  # "gke-backend-3" = {   #>>> Uncomment the block to create this new HELM release
+  # "gke-backend-3" = { #>>> Uncomment the block to create this new HELM release
   #   chart_source       = "../hello-kubernetes"
   #   namespace          = "gke-dev-hw"
   #   create_namespace   = true

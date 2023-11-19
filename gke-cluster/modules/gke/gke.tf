@@ -13,6 +13,9 @@ resource "google_container_cluster" "gke_cluster" {
   subnetwork               = var.subnetwork_id
   deletion_protection      = false
   node_locations           = var.regional ? var.node_locations : null
+  release_channel {
+    channel = "UNSPECIFIED"
+  }
 }
 
 resource "google_container_node_pool" "gke_nodes" {
@@ -20,6 +23,7 @@ resource "google_container_node_pool" "gke_nodes" {
   name       = google_container_cluster.gke_cluster.name
   cluster    = google_container_cluster.gke_cluster.id
   node_count = var.gke_nodes
+  version    = data.google_container_engine_versions.gke_kubernetes_version.latest_node_version
 
   node_config {
     oauth_scopes = var.oauth_scopes
@@ -32,5 +36,8 @@ resource "google_container_node_pool" "gke_nodes" {
     metadata = {
       disable-legacy-endpoints = "true"
     }
+  }
+  management {
+    auto_upgrade = false
   }
 }
