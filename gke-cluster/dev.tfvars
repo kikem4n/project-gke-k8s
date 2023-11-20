@@ -34,21 +34,21 @@ uptime_config = {                #>>> Uptime config map
     checker_type    = "STATIC_IP_CHECKERS"
     checker_period  = "60s"
     checker_timeout = "10s"
-    path            = "/backend1"
+    path            = "/backend1-dev"
     port            = "80"
   }
   "HTTP_GKE_Check_Backend_2" = {
     checker_type    = "STATIC_IP_CHECKERS"
     checker_period  = "60s"
     checker_timeout = "10s"
-    path            = "/backend2"
+    path            = "/backend2-dev"
     port            = "80"
   }
   # "HTTP_GKE_Check_Backend_3" = { #>>> Uncomment the block to create this new Uptime Check
   #   checker_type    = "STATIC_IP_CHECKERS"
   #   checker_period  = "60s"
   #   checker_timeout = "10s"
-  #   path            = "/backend3"
+  #   path            = "/backend3-dev"
   #   port            = "80"
   # }
 }
@@ -56,7 +56,7 @@ uptime_config = {                #>>> Uptime config map
 
 ## HELM Variables
 releases_map = {
-  "gke-backend-1" = { #>>> HELM Release, if want a new one copy this block and add it to the map
+  "gke-dev-backend-1" = { #>>> HELM Release, if want a new one copy this block and add it to the map
     chart_source       = "../hello-kubernetes"
     namespace          = "gke-dev-hw"
     create_namespace   = true
@@ -66,10 +66,10 @@ releases_map = {
     container_image    = "paulbouwer/hello-kubernetes"
     image_version      = "1.10"
     ingress_configured = true
-    path_prefix        = "backend1"
-    message            = "Hello World from First Backend"
+    path_prefix        = "backend1-dev"
+    message            = "Hello World from First Backend [DEV]"
   }
-  "gke-backend-2" = {
+  "gke-dev-backend-2" = {
     chart_source       = "../hello-kubernetes"
     namespace          = "gke-dev-hw"
     create_namespace   = true
@@ -79,10 +79,10 @@ releases_map = {
     container_image    = "paulbouwer/hello-kubernetes"
     image_version      = "1.10"
     ingress_configured = true
-    path_prefix        = "backend2"
-    message            = "Hello World from Second Backend"
+    path_prefix        = "backend2-dev"
+    message            = "Hello World from Second Backend [DEV]"
   }
-  # "gke-backend-3" = { #>>> Uncomment the block to create this new HELM release
+  # "gke-dev-backend-3" = { #>>> Uncomment the block to create this new HELM release
   #   chart_source       = "../hello-kubernetes"
   #   namespace          = "gke-dev-hw"
   #   create_namespace   = true
@@ -92,8 +92,8 @@ releases_map = {
   #   container_image    = "paulbouwer/hello-kubernetes"
   #   image_version      = "1.10"
   #   ingress_configured = true
-  #   path_prefix        = "backend3"
-  #   message            = "Hello World from Third Backend"
+  #   path_prefix        = "backend3-dev"
+  #   message            = "Hello World from Third Backend [DEV]" 
   # }
 }
 
