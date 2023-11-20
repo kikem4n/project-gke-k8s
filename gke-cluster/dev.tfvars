@@ -44,13 +44,13 @@ uptime_config = {                #>>> Uptime config map
     path            = "/backend2-dev"
     port            = "80"
   }
-  # "HTTP_GKE_Check_Backend_3" = { #>>> Uncomment the block to create this new Uptime Check
-  #   checker_type    = "STATIC_IP_CHECKERS"
-  #   checker_period  = "60s"
-  #   checker_timeout = "10s"
-  #   path            = "/backend3-dev"
-  #   port            = "80"
-  # }
+  "HTTP_GKE_Check_Backend_3" = { #>>> Uncomment the block to create this new Uptime Check
+    checker_type    = "STATIC_IP_CHECKERS"
+    checker_period  = "60s"
+    checker_timeout = "10s"
+    path            = "/backend3-dev"
+    port            = "80"
+  }
 }
 
 
@@ -82,19 +82,19 @@ releases_map = {
     path_prefix        = "backend2-dev"
     message            = "Hello World from Second Backend [DEV]"
   }
-  # "gke-dev-backend-3" = { #>>> Uncomment the block to create this new HELM release
-  #   chart_source       = "../hello-kubernetes"
-  #   namespace          = "gke-dev-hw"
-  #   create_namespace   = true
-  #   service_type       = "ClusterIP"
-  #   replica_count      = "3"
-  #   service_port       = "80"
-  #   container_image    = "paulbouwer/hello-kubernetes"
-  #   image_version      = "1.10"
-  #   ingress_configured = true
-  #   path_prefix        = "backend3-dev"
-  #   message            = "Hello World from Third Backend [DEV]" 
-  # }
+  "gke-dev-backend-3" = { #>>> Uncomment the block to create this new HELM release
+    chart_source       = "../hello-kubernetes"
+    namespace          = "gke-dev-hw"
+    create_namespace   = true
+    service_type       = "ClusterIP"
+    replica_count      = "3"
+    service_port       = "80"
+    container_image    = "paulbouwer/hello-kubernetes"
+    image_version      = "1.10"
+    ingress_configured = true
+    path_prefix        = "backend3-dev"
+    message            = "Hello World from Third Backend [DEV]" 
+  }
 }
 
 ingress_name                 = "ingress-nginx"                              #>>> Ingress Name
