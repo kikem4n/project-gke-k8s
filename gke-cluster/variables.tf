@@ -115,3 +115,24 @@ variable "ingress_create_namespace" {
   description = "To decide if create the Ingress Namespace if not exisiting"
   type        = string
 }
+
+variable "prometheus_name" {
+  description = "Name of the prometheus Controller"
+  type        = string
+}
+variable "prometheus_namespace" {
+  description = "Namespace to deploy the prometheus"
+  type        = string
+}
+variable "prometheus_repository" {
+  description = "prometheus public repository path"
+  type        = string
+}
+variable "prometheus_chart" {
+  description = "prometheus HELM Chart name"
+  type        = string
+}
+variable "prometheus_create_namespace" {
+  description = "To decide if create the prometheus Namespace if not exisiting"
+  type        = string
+}

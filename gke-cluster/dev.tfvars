@@ -34,29 +34,29 @@ uptime_config = {                #>>> Uptime config map
     checker_type    = "STATIC_IP_CHECKERS"
     checker_period  = "60s"
     checker_timeout = "10s"
-    path            = "/backend1"
+    path            = "/backend1-dev"
     port            = "80"
   }
   "HTTP_GKE_Check_Backend_2" = {
     checker_type    = "STATIC_IP_CHECKERS"
     checker_period  = "60s"
     checker_timeout = "10s"
-    path            = "/backend2"
+    path            = "/backend2-dev"
     port            = "80"
   }
-  # "HTTP_GKE_Check_Backend_3" = { #>>> Uncomment the block to create this new Uptime Check
-  #   checker_type    = "STATIC_IP_CHECKERS"
-  #   checker_period  = "60s"
-  #   checker_timeout = "10s"
-  #   path            = "/backend3"
-  #   port            = "80"
-  # }
+  "HTTP_GKE_Check_Backend_3" = { #>>> Uncomment the block to create this new Uptime Check
+    checker_type    = "STATIC_IP_CHECKERS"
+    checker_period  = "60s"
+    checker_timeout = "10s"
+    path            = "/backend3-dev"
+    port            = "80"
+  }
 }
 
 
 ## HELM Variables
 releases_map = {
-  "gke-backend-1" = { #>>> HELM Release, if want a new one copy this block and add it to the map
+  "gke-dev-backend-1" = { #>>> HELM Release, if want a new one copy this block and add it to the map
     chart_source       = "../hello-kubernetes"
     namespace          = "gke-dev-hw"
     create_namespace   = true
@@ -66,10 +66,10 @@ releases_map = {
     container_image    = "paulbouwer/hello-kubernetes"
     image_version      = "1.10"
     ingress_configured = true
-    path_prefix        = "backend1"
-    message            = "Hello World from First Backend"
+    path_prefix        = "backend1-dev"
+    message            = "Hello World from First Backend [DEV]"
   }
-  "gke-backend-2" = {
+  "gke-dev-backend-2" = {
     chart_source       = "../hello-kubernetes"
     namespace          = "gke-dev-hw"
     create_namespace   = true
@@ -79,27 +79,33 @@ releases_map = {
     container_image    = "paulbouwer/hello-kubernetes"
     image_version      = "1.10"
     ingress_configured = true
-    path_prefix        = "backend2"
-    message            = "Hello World from Second Backend"
+    path_prefix        = "backend2-dev"
+    message            = "Hello World from Second Backend [DEV]"
   }
-  # "gke-backend-3" = { #>>> Uncomment the block to create this new HELM release
-  #   chart_source       = "../hello-kubernetes"
-  #   namespace          = "gke-dev-hw"
-  #   create_namespace   = true
-  #   service_type       = "ClusterIP"
-  #   replica_count      = "3"
-  #   service_port       = "80"
-  #   container_image    = "paulbouwer/hello-kubernetes"
-  #   image_version      = "1.10"
-  #   ingress_configured = true
-  #   path_prefix        = "backend3"
-  #   message            = "Hello World from Third Backend"
-  # }
+  "gke-dev-backend-3" = { #>>> Uncomment the block to create this new HELM release
+    chart_source       = "../hello-kubernetes"
+    namespace          = "gke-dev-hw"
+    create_namespace   = true
+    service_type       = "ClusterIP"
+    replica_count      = "3"
+    service_port       = "80"
+    container_image    = "paulbouwer/hello-kubernetes"
+    image_version      = "1.10"
+    ingress_configured = true
+    path_prefix        = "backend3-dev"
+    message            = "Hello World from Third Backend [DEV]"
+  }
 }
 
 ingress_name                 = "ingress-nginx"                              #>>> Ingress Name
-ingress_controller_namespace = "ingress-dev"                                #>>> Ingress Controller Namespace
+ingress_controller_namespace = "ingress-nginx"                              #>>> Ingress Controller Namespace
 ingress_namespace            = "gke-dev-hw"                                 #>>> Namespace to create the Ingress Manifest, set it in the same namespace as your application HELM Releases
 ingress_repository           = "https://kubernetes.github.io/ingress-nginx" #>>> Ingress Controller public Repository
 ingress_chart                = "ingress-nginx"                              #>>> Chart to be installed
 ingress_create_namespace     = true                                         #>>> Set to true to create the Ingress Controller namespace.
+
+prometheus_name             = "prometheus"                                         #>>> prometheus Name
+prometheus_namespace        = "prometheus"                                         #>>> Namespace to create the prometheus Manifest, set it in the same namespace as your application HELM Releases
+prometheus_repository       = "https://prometheus-community.github.io/helm-charts" #>>> prometheus Controller public Repository
+prometheus_chart            = "kube-prometheus-stack"                              #>>> Chart to be installed
+prometheus_create_namespace = true                                                 #>>> Set to true to create the prometheus Controller namespace.

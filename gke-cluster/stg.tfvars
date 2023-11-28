@@ -6,8 +6,8 @@
 
 # ## VPC Variables
 # vpc_name      = "gke-stg-vpc"
-# subnet_name   = "gke"
-# ip_cidr_block = "10.1.0.0/16"
+# subnet_name   = "gke-stg"
+# ip_cidr_block = "10.2.0.0/16"
 # routing_mode  = "GLOBAL"
 
 # ## GKE Variables
@@ -34,23 +34,23 @@
 #     checker_type    = "STATIC_IP_CHECKERS"
 #     checker_period  = "60s"
 #     checker_timeout = "10s"
-#     path            = "/backend1"
+#     path            = "/backend1-stg"
 #     port            = "80"
 #   }
 #   "HTTP_GKE_Check_Backend_2" = {
 #     checker_type    = "STATIC_IP_CHECKERS"
 #     checker_period  = "60s"
 #     checker_timeout = "10s"
-#     path            = "/backend2"
+#     path            = "/backend2-stg"
 #     port            = "80"
 #   }
-#   # "HTTP_GKE_Check_Backend_3" = {
-#   #   checker_type    = "STATIC_IP_CHECKERS"
-#   #   checker_period  = "60s"
-#   #   checker_timeout = "10s"
-#   #   path            = "/backend3"
-#   #   port            = "80"
-#   # }
+#   "HTTP_GKE_Check_Backend_3" = {
+#     checker_type    = "STATIC_IP_CHECKERS"
+#     checker_period  = "60s"
+#     checker_timeout = "10s"
+#     path            = "/backend3-stg"
+#     port            = "80"
+#   }
 # }
 
 
@@ -66,8 +66,8 @@
 #     container_image    = "paulbouwer/hello-kubernetes"
 #     image_version      = "1.10"
 #     ingress_configured = true
-#     path_prefix        = "backend1"
-#     message            = "Hello World from First Backend"
+#     path_prefix        = "backend1-stg"
+#     message            = "Hello World from First Backend [STG]"
 #   }
 #   "gke-stg-backend-2" = {
 #     chart_source       = "../hello-kubernetes"
@@ -79,26 +79,26 @@
 #     container_image    = "paulbouwer/hello-kubernetes"
 #     image_version      = "1.10"
 #     ingress_configured = true
-#     path_prefix        = "backend2"
-#     message            = "Hello World from Second Backend"
+#     path_prefix        = "backend2-stg"
+#     message            = "Hello World from Second Backend [STG]"
 #   }
-#   # "gke-stg-backend-3" = {
-#   #   chart_source       = "../hello-kubernetes"
-#   #   namespace          = "gke-stg-hw"
-#   #   create_namespace   = true
-#   #   service_type       = "ClusterIP"
-#   #   replica_count      = "3"
-#   #   service_port       = "80"
-#   #   container_image    = "paulbouwer/hello-kubernetes"
-#   #   image_version      = "1.10"
-#   #   ingress_configured = true
-#   #   path_prefix        = "backend3"
-#   #   message            = "Hello World from Third Backend"
-#   # }
+#   "gke-stg-backend-3" = {
+#     chart_source       = "../hello-kubernetes"
+#     namespace          = "gke-stg-hw"
+#     create_namespace   = true
+#     service_type       = "ClusterIP"
+#     replica_count      = "3"
+#     service_port       = "80"
+#     container_image    = "paulbouwer/hello-kubernetes"
+#     image_version      = "1.10"
+#     ingress_configured = true
+#     path_prefix        = "backend3-stg"
+#     message            = "Hello World from Third Backend [STG]"
+#   }
 # }
 
 # ingress_name                 = "ingress-nginx"
-# ingress_controller_namespace = "ingress"
+# ingress_controller_namespace = "ingress-stg"
 # ingress_namespace            = "gke-stg-hw"
 # ingress_repository           = "https://kubernetes.github.io/ingress-nginx"
 # ingress_chart                = "ingress-nginx"
