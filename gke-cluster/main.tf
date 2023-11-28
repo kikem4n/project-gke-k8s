@@ -95,4 +95,11 @@ module "helm" {
   ingress_repository           = var.ingress_repository
   ingress_chart                = var.ingress_chart
   ingress_create_namespace     = var.ingress_create_namespace
+
+  prometheus_name             = var.prometheus_name
+  prometheus_namespace        = var.prometheus_namespace
+  prometheus_repository       = var.prometheus_repository
+  prometheus_chart            = var.prometheus_chart
+  prometheus_create_namespace = var.ingress_create_namespace
+
 }

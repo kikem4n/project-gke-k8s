@@ -93,13 +93,19 @@ releases_map = {
     image_version      = "1.10"
     ingress_configured = true
     path_prefix        = "backend3-dev"
-    message            = "Hello World from Third Backend [DEV]" 
+    message            = "Hello World from Third Backend [DEV]"
   }
 }
 
 ingress_name                 = "ingress-nginx"                              #>>> Ingress Name
-ingress_controller_namespace = "ingress-dev"                                #>>> Ingress Controller Namespace
+ingress_controller_namespace = "ingress-nginx"                              #>>> Ingress Controller Namespace
 ingress_namespace            = "gke-dev-hw"                                 #>>> Namespace to create the Ingress Manifest, set it in the same namespace as your application HELM Releases
 ingress_repository           = "https://kubernetes.github.io/ingress-nginx" #>>> Ingress Controller public Repository
 ingress_chart                = "ingress-nginx"                              #>>> Chart to be installed
 ingress_create_namespace     = true                                         #>>> Set to true to create the Ingress Controller namespace.
+
+prometheus_name             = "prometheus"                                         #>>> prometheus Name
+prometheus_namespace        = "prometheus"                                         #>>> Namespace to create the prometheus Manifest, set it in the same namespace as your application HELM Releases
+prometheus_repository       = "https://prometheus-community.github.io/helm-charts" #>>> prometheus Controller public Repository
+prometheus_chart            = "kube-prometheus-stack"                              #>>> Chart to be installed
+prometheus_create_namespace = true                                                 #>>> Set to true to create the prometheus Controller namespace.

@@ -106,6 +106,16 @@ In case of needing more helm releases just add a new key within the `releases` m
 
 We make use of the official NGINX Ingress Controller, it is deployed in it's own namespace you specify in the `ingress_controller_variable`
 
+#### Prometheus and Grafana
+
+We also install a Helm release with Prometheus and Grafana Stack.
+
+To access Grafana UI, use the Ingress IP address without any path.
+
+Default credentials are
+User: admin
+Password: prom-operator
+
 #### Ingress v1
 
 With the problem of not knowing how many Services backends we need at the end of the day we have to automate the way to add/remove backends to/from our Ingress resource, so the approach is to create the Ingress using Kubernetes Provider and setup the same way we would do it using a YAML manifest but in here we have a Dynamic block at `Path` level, which allows us to iterate the variables when a new HELM Release is added or removed.
