@@ -22,7 +22,10 @@ resource "helm_release" "prometheus" {
 }
 
 resource "kubernetes_ingress_v1" "ingress-prometheus" {
-  depends_on             = [helm_release.helm_releases]
+  depends_on             = [
+    kubernetes_ingress_v1.ingress-nginx,
+    helm_release.prometheus,
+  ]
   wait_for_load_balancer = true
   metadata {
     name      = "${var.prometheus_name}-ingress"

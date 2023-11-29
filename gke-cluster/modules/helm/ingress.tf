@@ -15,14 +15,6 @@ resource "helm_release" "ingress-nginx" {
     name = "controller.metrics.enabled"
     value = true
   }
-  set {
-    name = "controller.metrics.serviceMonitor.enabled"
-    value = true
-  }
-  set {
-    name = "controller.metrics.serviceMonitor.additionalLabels.release"
-    value = "prometheus"
-  }    
 }
 
 resource "kubernetes_ingress_v1" "ingress-nginx" {
