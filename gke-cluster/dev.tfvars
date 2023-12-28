@@ -3,6 +3,11 @@ project_id  = "gcp-dev-405122" #>>> GCP Project ID, change it to yours
 region      = "us-east4"       #>>> GCP Region
 zone        = "us-east4-a"     #>>> GCP Zone from the region
 credentials = ".//gcp-keys.json"
+# bucket = "gcp-terraform-kikeman"
+# organization = "gannett"
+# team_name = "peng"
+# project_name = "gcp-test"
+# app_tag = "gcp"
 
 ## VPC Variables
 vpc_name      = "gke-dev-vpc" #>>> VPC Name
