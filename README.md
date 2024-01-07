@@ -49,7 +49,7 @@ When succesfully applied the Terraform code, an output will be showing, please a
 - **Optional** A GCS Bucket to store the [TFSTATE](https://developer.hashicorp.com/terraform/language/settings/backends/gcs). Mandatory if you won't deploy the infrastructure using SCALR or Terraform Cloud.
 - **Optional** A [SCALR](https://www.scalr.com) Account to remote provisioning and state control.
 
-## How to apply
+## Deploy
 
 ### Locally
 
