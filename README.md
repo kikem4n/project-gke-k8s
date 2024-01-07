@@ -32,7 +32,7 @@ When succesfully applied the Terraform code, an output will be showing, please a
 - For testing & research purposes only. Not a solution to be deployed in Prod environments.
 - For GCS Remote Backend, please have an exisiting GCS Bucket and access to it.
 
-## Prerequisites
+## Prerequisites.
 
 ### Software
 
